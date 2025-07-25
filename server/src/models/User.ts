@@ -29,6 +29,7 @@ const userSchema = new Schema<IUser>({
   },
   email: {
     type: String,
+    index: true,
     required: [true, 'Email is required'],
     unique: true,
     trim: true,
@@ -42,12 +43,6 @@ const userSchema = new Schema<IUser>({
   }
 }, {
   timestamps: true, // Automatically adds createdAt and updatedAt fields
-  // toJSON: {
-  //   transform: function(doc, ret) {
-  //     delete (ret as any).password; // Remove password from JSON output
-  //     return ret;
-  //   }
-  // }
 });
 
 // Create and export the model

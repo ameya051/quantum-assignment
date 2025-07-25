@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { User, Lock, AlertCircle } from "lucide-react";
 import { loginSchema, type LoginFormData } from "@/schemas/auth";
 import { useLoginMutation } from "@/apis/auth";
+import { Link } from "@tanstack/react-router";
 
 export const LoginForm = () => {
 
@@ -19,7 +20,7 @@ export const LoginForm = () => {
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      name: "",
+      email: "",
       password: "",
       rememberMe: false,
     },
@@ -59,17 +60,17 @@ export const LoginForm = () => {
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input
-                  {...register("name")}
-                  type="text"
-                  placeholder="username"
-                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.name ? "border-destructive" : ""
+                  {...register("email")}
+                  type="email"
+                  placeholder="email"
+                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.email ? "border-destructive" : ""
                     }`}
                 />
               </div>
-              {errors.name && (
+              {errors.email && (
                 <div className="flex items-center gap-2 text-destructive text-sm">
                   <AlertCircle className="w-4 h-4" />
-                  {errors.name.message}
+                  {errors.email.message}
                 </div>
               )}
             </div>
@@ -118,7 +119,6 @@ export const LoginForm = () => {
               </button>
             </div>
 
-            {/* Login Button */}
             <Button
               type="submit"
               disabled={mutation.isPending}
@@ -127,6 +127,19 @@ export const LoginForm = () => {
               {mutation.isPending ? "LOGGING IN..." : "LOGIN"}
             </Button>
           </form>
+
+          {/* Sign Up Link */}
+          <div className="mt-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className="text-primary hover:text-primary/80 font-medium transition-colors"
+              >
+                Sign up
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

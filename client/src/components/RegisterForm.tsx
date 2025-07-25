@@ -9,6 +9,7 @@ import { User, Mail, Lock, CalendarIcon, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { registerSchema, type RegisterFormData } from "@/schemas/auth";
 import { useRegisterMutation } from "@/apis/auth";
+import { Link } from "@tanstack/react-router";
 
 export const RegisterForm = () => {
   const {
@@ -183,6 +184,19 @@ export const RegisterForm = () => {
               {mutation.isPending ? "CREATING ACCOUNT..." : "SIGN UP"}
             </Button>
           </form>
+
+          {/* Sign In Link */}
+          <div className="mt-6 text-center">
+            <p className="text-sm text-muted-foreground">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-primary hover:text-primary/80 font-medium transition-colors"
+              >
+                Sign in
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>

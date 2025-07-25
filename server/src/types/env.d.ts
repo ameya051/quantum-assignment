@@ -8,7 +8,6 @@ declare global {
       DATABASE_URL?: string;
       DB_NAME?: string;
       JWT_SECRET: string;
-      JWT_EXPIRES_IN?: string;
       API_BASE_URL?: string;
     }
   }
