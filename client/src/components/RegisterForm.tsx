@@ -58,12 +58,14 @@ export const RegisterForm = () => {
             {/* Name Field */}
             <div className="space-y-2">
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <div className="absolute left-0 top-0 h-full w-12 flex items-center justify-center border-r border-border/50">
+                  <User className="w-5 h-5 text-muted-foreground" />
+                </div>
                 <Input
                   {...register("name")}
                   type="text"
                   placeholder="Full name"
-                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.name ? "border-destructive" : ""
+                  className={`pl-14 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.name ? "border-destructive" : ""
                     }`}
                 />
               </div>
@@ -80,12 +82,14 @@ export const RegisterForm = () => {
               <Popover>
                 <PopoverTrigger asChild>
                   <div className="relative">
-                    <CalendarIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground z-10" />
+                    <div className="absolute left-0 top-0 h-full w-12 flex items-center justify-center border-r border-border/50 z-10">
+                      <CalendarIcon className="w-5 h-5 text-muted-foreground" />
+                    </div>
                     <Button
                       type="button"
                       variant="outline"
                       className={cn(
-                        "w-full h-14 pl-12 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl justify-start text-left font-normal",
+                        "w-full h-14 pl-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl justify-start text-left font-normal",
                         !dob && "text-muted-foreground",
                         errors.dob && "border-destructive"
                       )}
@@ -123,12 +127,14 @@ export const RegisterForm = () => {
             {/* Email Field */}
             <div className="space-y-2">
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <div className="absolute left-0 top-0 h-full w-12 flex items-center justify-center border-r border-border/50">
+                  <Mail className="w-5 h-5 text-muted-foreground" />
+                </div>
                 <Input
                   {...register("email")}
                   type="email"
                   placeholder="Email address"
-                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.email ? "border-destructive" : ""
+                  className={`pl-14 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.email ? "border-destructive" : ""
                     }`}
                 />
               </div>
@@ -143,12 +149,14 @@ export const RegisterForm = () => {
             {/* Password Field */}
             <div className="space-y-2">
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <div className="absolute left-0 top-0 h-full w-12 flex items-center justify-center border-r border-border/50">
+                  <Lock className="w-5 h-5 text-muted-foreground" />
+                </div>
                 <Input
                   {...register("password")}
                   type="password"
                   placeholder="Password"
-                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.password ? "border-destructive" : ""
+                  className={`pl-14 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.password ? "border-destructive" : ""
                     }`}
                 />
               </div>

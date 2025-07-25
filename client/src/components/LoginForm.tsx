@@ -58,12 +58,14 @@ export const LoginForm = () => {
             {/* Username Field */}
             <div className="space-y-2">
               <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <div className="absolute left-0 top-0 h-full w-12 flex items-center justify-center border-r border-border/50">
+                  <User className="w-5 h-5 text-muted-foreground" />
+                </div>
                 <Input
                   {...register("email")}
                   type="email"
                   placeholder="email"
-                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.email ? "border-destructive" : ""
+                  className={`pl-14 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.email ? "border-destructive" : ""
                     }`}
                 />
               </div>
@@ -78,12 +80,14 @@ export const LoginForm = () => {
             {/* Password Field */}
             <div className="space-y-2">
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <div className="absolute left-0 top-0 h-full w-12 flex items-center justify-center border-r border-border/50">
+                  <Lock className="w-5 h-5 text-muted-foreground" />
+                </div>
                 <Input
                   {...register("password")}
                   type="password"
                   placeholder="password"
-                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.password ? "border-destructive" : ""
+                  className={`pl-14 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.password ? "border-destructive" : ""
                     }`}
                 />
               </div>
