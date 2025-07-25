@@ -35,21 +35,21 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-background flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-block bg-primary text-primary-foreground px-12 py-3 rounded-lg font-semibold text-lg tracking-wide">
-            SIGN IN
-          </div>
-        </div>
 
         {/* Login Card */}
-        <div className="bg-card rounded-3xl p-8 shadow-glow border border-border/20">
+        <div className="bg-card p-8 shadow-glow border border-border/20">
+          <div className="text-center -mt-14 mb-6">
+            <div className="inline-block bg-primary text-primary-foreground px-12 py-3 font-semibold text-lg tracking-wide">
+              SIGN IN
+            </div>
+          </div>
           {/* Avatar */}
           <div className="flex justify-center mb-8">
-            <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center border-2 border-muted">
-              <User className="w-10 h-10 text-muted-foreground" />
+            <div className="w-20 h-20 bg-secondary rounded-full flex items-center justify-center border-2 border-zinc-500">
+              <User className="w-12 h-12 text-muted-foreground" />
             </div>
           </div>
 
