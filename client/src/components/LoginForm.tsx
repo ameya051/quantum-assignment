@@ -1,24 +1,14 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { User, Lock, AlertCircle } from "lucide-react";
-import {toast} from 'sonner';
-
-const loginSchema = z.object({
-  username: z.string().min(1, "Username is required").min(3, "Username must be at least 3 characters"),
-  password: z.string().min(1, "Password is required").min(6, "Password must be at least 6 characters"),
-  rememberMe: z.boolean(),
-});
-
-type LoginFormData = z.infer<typeof loginSchema>;
+import { loginSchema, type LoginFormData } from "@/schemas/auth";
+import { useLoginMutation } from "@/apis/auth";
 
 export const LoginForm = () => {
-  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -29,7 +19,7 @@ export const LoginForm = () => {
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      username: "",
+      name: "",
       password: "",
       rememberMe: false,
     },
@@ -37,20 +27,10 @@ export const LoginForm = () => {
 
   const rememberMe = watch("rememberMe");
 
-  const onSubmit = async (data: LoginFormData) => {
-    setIsLoading(true);
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+  const mutation = useLoginMutation();
 
-      toast("Login Successful");
-
-      console.log("Login data:", data);
-    } catch (error) {
-      toast("Login Failed");
-    } finally {
-      setIsLoading(false);
-    }
+  const onSubmit = (data: LoginFormData) => {
+    mutation.mutate(data);
   };
 
   return (
@@ -79,17 +59,17 @@ export const LoginForm = () => {
               <div className="relative">
                 <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input
-                  {...register("username")}
+                  {...register("name")}
                   type="text"
                   placeholder="username"
-                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.username ? "border-destructive" : ""
+                  className={`pl-12 h-14 bg-input border-border text-foreground placeholder:text-muted-foreground rounded-xl ${errors.name ? "border-destructive" : ""
                     }`}
                 />
               </div>
-              {errors.username && (
+              {errors.name && (
                 <div className="flex items-center gap-2 text-destructive text-sm">
                   <AlertCircle className="w-4 h-4" />
-                  {errors.username.message}
+                  {errors.name.message}
                 </div>
               )}
             </div>
@@ -141,10 +121,10 @@ export const LoginForm = () => {
             {/* Login Button */}
             <Button
               type="submit"
-              disabled={isLoading}
+              disabled={mutation.isPending}
               className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg rounded-xl transition-all duration-300 shadow-glow hover:shadow-lg"
             >
-              {isLoading ? "LOGGING IN..." : "LOGIN"}
+              {mutation.isPending ? "LOGGING IN..." : "LOGIN"}
             </Button>
           </form>
         </div>
